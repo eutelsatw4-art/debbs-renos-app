@@ -52,7 +52,7 @@ docker-compose up -d --build
 4. Access the application
 - Frontend: http://localhost (port 80)
 - Admin Panel: http://localhost/admin
-- Backend API: http://localhost:4000
+- Backend API: /api
 
 5. Useful commands
 ```bash
@@ -128,7 +128,7 @@ docker-compose up -d --build
 4. Access the application
 - Frontend: http://localhost (port 80)
 - Admin Panel: http://localhost/admin
-- Backend API: http://localhost:4000
+- Backend API: /api
 
 5. Useful commands
 ```bash

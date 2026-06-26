@@ -93,7 +93,7 @@ export default function App() {
   const [modalImage, setModalImage] = useState(null);
 
   useEffect(() => {
-    axios.get('http://localhost:4000/api/site').then(r => setData(r.data));
+    axios.get('/api/site').then(r => setData(r.data));
   }, []);
 
   const path = window.location.pathname;
@@ -145,7 +145,7 @@ export default function App() {
                 e.preventDefault();
                 setFormNote('Sending...');
                 try{
-                  await axios.post('http://localhost:4000/api/contact', formState);
+                  await axios.post('http:///api:4000/api/contact', formState);
                   setFormNote('Thanks — your request has been received.');
                   setFormState({ name:'', email:'', phone:'', address:'', budget:'', preferred_date:'', project_type:'', message:'' });
                 }catch(err){

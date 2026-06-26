@@ -19,7 +19,7 @@ export default function Admin() {
   const [loadingContacts, setLoadingContacts] = useState(false);
 
   useEffect(()=>{
-    axios.get('http://localhost:4000/api/site').then(r=>{ setData(r.data); setLoading(false); });
+    axios.get('/api/site').then(r=>{ setData(r.data); setLoading(false); });
   },[]);
 
   // normalize projects to ensure images array exists
@@ -47,7 +47,7 @@ export default function Admin() {
     const headers = { 'Content-Type':'multipart/form-data' };
     if (token) headers['authorization'] = `Bearer ${token}`;
     else if (adminPass) headers['x-admin-password'] = adminPass;
-    const res = await axios.post('http://localhost:4000/api/upload', fd, { headers });
+    const res = await axios.post('/api/upload', fd, { headers });
     return res.data.url;
   };
 
@@ -56,7 +56,7 @@ export default function Admin() {
     const headers = {};
     if (token) headers['authorization'] = `Bearer ${token}`;
     else if (adminPass) headers['x-admin-password'] = adminPass;
-    await axios.post('http://localhost:4000/api/site', data, { headers });
+    await axios.post('/api/site', data, { headers });
     setSaving(false);
     alert('Saved');
   };
@@ -64,7 +64,7 @@ export default function Admin() {
   const handleLogin = async () => {
     // attempt JWT login
     try {
-      const r = await axios.post('http://localhost:4000/api/admin/login', { username: loginUser, password: adminPass });
+      const r = await axios.post('/api/admin/login', { username: loginUser, password: adminPass });
       const t = r.data && r.data.token;
       if (t) {
         localStorage.setItem('admin_token', t);
@@ -99,7 +99,7 @@ export default function Admin() {
       const headers = {};
       if (token) headers['authorization'] = `Bearer ${token}`;
       else if (adminPass) headers['x-admin-password'] = adminPass;
-      await axios.post('http://localhost:4000/api/test-smtp', smtpCfg, { headers });
+      await axios.post('/api/test-smtp', smtpCfg, { headers });
       setSmtpTest('SMTP test sent successfully');
     } catch (e) {
       setSmtpTest('SMTP test failed: ' + (e.response?.data?.error || e.message));
@@ -137,7 +137,7 @@ export default function Admin() {
                 <label>Server Admin Secret</label>
                 <input type="password" placeholder="ADMIN_PASSWORD" value={regSecret} onChange={e=>setRegSecret(e.target.value)} />
               </div>
-              <button className="btn" onClick={async ()=>{if(!regUser||!regPass||!regSecret){alert('Fill all fields');return}try{await axios.post('http://localhost:4000/api/admin/register',{username:regUser,password:regPass},{headers:{'x-admin-password':regSecret}});alert('User created');setRegUser('');setRegPass('');setRegSecret('');}catch(e){alert('Register failed: '+(e.response?.data?.error||e.message))}}} style={{width:'100%'}}>Register</button>
+              <button className="btn" onClick={async ()=>{if(!regUser||!regPass||!regSecret){alert('Fill all fields');return}try{await axios.post('/api/api/admin/register',{username:regUser,password:regPass},{headers:{'x-admin-password':regSecret}});alert('User created');setRegUser('');setRegPass('');setRegSecret('');}catch(e){alert('Register failed: '+(e.response?.data?.error||e.message))}}} style={{width:'100%'}}>Register</button>
             </div>
           </div>
         </div>
@@ -223,8 +223,8 @@ export default function Admin() {
               <div className="admin-section">
                 <h2>Contact Submissions</h2>
                 <div style={{display:'flex',gap:'1rem',marginBottom:'1.5rem'}}>
-                  <button className="btn" onClick={async ()=>{setLoadingContacts(true);try{const headers={};if(token)headers['authorization']=`Bearer ${token}`;else if(adminPass)headers['x-admin-password']=adminPass;const r=await axios.get('http://localhost:4000/api/contacts',{headers});setContacts(r.data||[]);}catch(e){alert('Failed to load');}setLoadingContacts(false);}}>{loadingContacts?'Loading...':'Refresh'}</button>
-                  <button className="btn" onClick={async ()=>{try{const headers={};if(token)headers['authorization']=`Bearer ${token}`;else if(adminPass)headers['x-admin-password']=adminPass;const r=await axios.get('http://localhost:4000/api/contacts/export',{headers,responseType:'blob'});const url=window.URL.createObjectURL(new Blob([r.data]));const link=document.createElement('a');link.href=url;link.setAttribute('download','contacts.csv');document.body.appendChild(link);link.click();link.parentNode.removeChild(link);}catch(e){alert('Export failed')}}} className="btn">Export CSV</button>
+                  <button className="btn" onClick={async ()=>{setLoadingContacts(true);try{const headers={};if(token)headers['authorization']=`Bearer ${token}`;else if(adminPass)headers['x-admin-password']=adminPass;const r=await axios.get('/api/api/contacts',{headers});setContacts(r.data||[]);}catch(e){alert('Failed to load');}setLoadingContacts(false);}}>{loadingContacts?'Loading...':'Refresh'}</button>
+                  <button className="btn" onClick={async ()=>{try{const headers={};if(token)headers['authorization']=`Bearer ${token}`;else if(adminPass)headers['x-admin-password']=adminPass;const r=await axios.get('/api/api/contacts/export',{headers,responseType:'blob'});const url=window.URL.createObjectURL(new Blob([r.data]));const link=document.createElement('a');link.href=url;link.setAttribute('download','contacts.csv');document.body.appendChild(link);link.click();link.parentNode.removeChild(link);}catch(e){alert('Export failed')}}} className="btn">Export CSV</button>
                 </div>
                 <div className="table-card">
                   <table>
