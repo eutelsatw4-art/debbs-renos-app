@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+axios.defaults.baseURL = window.location.origin;
 import Admin from './Admin';
 
 function Header({ site, showNav, setShowNav }) {
@@ -145,7 +146,7 @@ export default function App() {
                 e.preventDefault();
                 setFormNote('Sending...');
                 try{
-                  await axios.post('http:///api:4000/api/contact', formState);
+                  await axios.post('/api/contact', formState);
                   setFormNote('Thanks — your request has been received.');
                   setFormState({ name:'', email:'', phone:'', address:'', budget:'', preferred_date:'', project_type:'', message:'' });
                 }catch(err){
