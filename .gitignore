@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 node_modules
 client/node_modules
 *.log
 dist
 build
+=======
+node_modules
+client/node_modules
+*.log
+dist
+build
+>>>>>>> 66ae0d1569fb70eb9cdbbeeabd7b31332c83ad4d

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "name": "debbs-renos-app",
   "version": "0.1.0",
@@ -11,3 +12,18 @@
     "concurrently": "^8.0.0"
   }
 }
+=======
+{
+  "name": "debbs-renos-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "client": "cd client && npm start",
+    "server": "node server/index.js",
+    "start": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "dependencies": {
+    "concurrently": "^8.0.0"
+  }
+}
+>>>>>>> 66ae0d1569fb70eb9cdbbeeabd7b31332c83ad4d
