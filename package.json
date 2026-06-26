@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+HEAD
 {
   "name": "debbs-renos-app",
   "version": "0.1.0",
@@ -26,4 +26,4 @@
     "concurrently": "^8.0.0"
   }
 }
->>>>>>> 66ae0d1569fb70eb9cdbbeeabd7b31332c83ad4d
+ 66ae0d1569fb70eb9cdbbeeabd7b31332c83ad4d
