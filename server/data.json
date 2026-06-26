@@ -1,0 +1,67 @@
+{
+  "site": {
+    "title": "Debbs Renos and General Contracting Inc.",
+    "tagline": "Transforming Homes With Craftsmanship & Integrity",
+    "phone": "(204) 555-1234",
+    "email": "info@debbsrenos.ca",
+    "address": "Winnipeg, Manitoba"
+  },
+  "services": [
+    {
+      "id": 1,
+      "title": "Kitchen Renovations",
+      "desc": "Modern, functional, beautifully crafted kitchens tailored to your lifestyle.",
+      "items": ["Custom cabinetry", "Countertops & tiling", "Full redesigns"]
+    },
+    {
+      "id": 2,
+      "title": "Basement Finishing",
+      "desc": "Create a warm, usable space — family room, suite, office, or entertainment area.",
+      "items": ["Framing & insulation", "Flooring & drywall", "Custom layouts"]
+    }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "title": "Modern Kitchen Upgrade",
+      "desc": "Open‑concept redesign with custom cabinetry and quartz countertops.",
+      "image": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop"
+    }
+    ,{
+      "id": 2,
+      "title": "Cozy Bathroom Refresh",
+      "desc": "Stylish tile work and efficient layout update.",
+      "image": "https://images.unsplash.com/photo-1559599239-6c9f2a8a3f1e?w=800&h=600&fit=crop"
+    },{
+      "id": 3,
+      "title": "Bright Basement Conversion",
+      "desc": "Finished basement with media area and wet bar.",
+      "image": "https://images.unsplash.com/photo-1505691723518-36a3cdb4c9ef?w=800&h=600&fit=crop"
+    },{
+      "id": 4,
+      "title": "Elegant Home Addition",
+      "desc": "Seamless addition with matching exterior and open interiors.",
+      "image": "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=800&h=600&fit=crop"
+    },{
+      "id": 5,
+      "title": "Refinished Hardwood Floors",
+      "desc": "Restore and refinish for lasting beauty.",
+      "image": "https://images.unsplash.com/photo-1508973370466-1d3a6f8d8b6b?w=800&h=600&fit=crop"
+    },{
+      "id": 6,
+      "title": "Custom Cabinetry Install",
+      "desc": "Tailored storage solutions for kitchens and baths.",
+      "image": "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?w=800&h=600&fit=crop"
+    },{
+      "id": 7,
+      "title": "Exterior Siding & Trim",
+      "desc": "Durable siding and crisp trim work for curb appeal.",
+      "image": "https://images.unsplash.com/photo-1505692794400-8d1f1d7d0bf9?w=800&h=600&fit=crop"
+    },{
+      "id": 8,
+      "title": "Tile & Backsplash Details",
+      "desc": "Detail-focused tile installations that stand out.",
+      "image": "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=800&h=600&fit=crop"
+    }
+  ]
+}

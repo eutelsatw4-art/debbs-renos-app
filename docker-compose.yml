@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: debbs-renos-server
+    restart: unless-stopped
+    ports:
+      - "4000:4000"
+    volumes:
+      - server_data:/app/uploads
+      - server_db:/app/data.db
+    environment:
+      - PORT=4000
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD:-change_this_secret}
+      - ADMIN_JWT_SECRET=${ADMIN_JWT_SECRET:-change_this_secret}
+      - ADMIN_USER=${ADMIN_USER:-admin}
+      - SMTP_HOST=${SMTP_HOST:-}
+      - SMTP_PORT=${SMTP_PORT:-587}
+      - SMTP_SECURE=${SMTP_SECURE:-false}
+      - SMTP_USER=${SMTP_USER:-}
+      - SMTP_PASS=${SMTP_PASS:-}
+      - SMTP_FROM=${SMTP_FROM:-}
+      - CONTACT_RECEIVER=${CONTACT_RECEIVER:-}
+    networks:
+      - debbs-network
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: debbs-renos-client
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - server
+    networks:
+      - debbs-network
+
+volumes:
+  server_data:
+    driver: local
+  server_db:
+    driver: local
+
+networks:
+  debbs-network:
+    driver: bridge
