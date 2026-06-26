@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-axios.defaults.baseURL = window.location.origin;
+axios.defaults.baseURL = 'https://debbs-renos-server.onrender.com';
 import Admin from './Admin';
 
 function Header({ site, showNav, setShowNav }) {
