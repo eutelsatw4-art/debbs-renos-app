@@ -1,25 +1,33 @@
 const path = require('path');
 const fs = require('fs');
-const sqlite3 = require('sqlite3').verbose();
+const Database = require('better-sqlite3');
 
 const DB_FILE = path.join(__dirname, 'data.db');
 const INIT_JSON = path.join(__dirname, 'data.json');
 
-const db = new sqlite3.Database(DB_FILE);
+const db = new Database(DB_FILE);
 
 function run(sql, params=[]) {
   return new Promise((resolve, reject) => {
-    db.run(sql, params, function(err) {
-      if (err) reject(err); else resolve(this);
-    });
+    try {
+      const stmt = db.prepare(sql);
+      const result = stmt.run(...params);
+      resolve(result);
+    } catch (err) {
+      reject(err);
+    }
   });
 }
 
 function all(sql, params=[]) {
   return new Promise((resolve, reject) => {
-    db.all(sql, params, (err, rows) => {
-      if (err) reject(err); else resolve(rows);
-    });
+    try {
+      const stmt = db.prepare(sql);
+      const rows = stmt.all(...params);
+      resolve(rows);
+    } catch (err) {
+      reject(err);
+    }
   });
 }
 
@@ -178,4 +186,4 @@ async function saveContact(contact) {
   ]);
 }
 
-module.exports = { init, getAllData, saveAllData, saveContact };
+module.exports = { init, getAllData, saveAllData, saveContact, getUserByUsername, createUser, usersCount, getContacts };
